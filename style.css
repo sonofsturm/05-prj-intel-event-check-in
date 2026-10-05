@@ -277,6 +277,53 @@ button .fas {
   font-weight: 700;
 }
 
+.celebration-modal {
+  width: min(90%, 520px);
+  border: 0;
+  border-radius: 16px;
+  padding: 0;
+  color: #334155;
+  box-shadow: 0 18px 50px rgba(0, 60, 116, 0.3);
+}
+
+.celebration-modal::backdrop {
+  background-color: rgba(0, 30, 60, 0.65);
+}
+
+.celebration-content {
+  padding: 40px 32px 32px;
+  text-align: center;
+  background-color: #fffdf5;
+}
+
+.celebration-kicker {
+  margin-bottom: 8px;
+  color: #7a4b00;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.celebration-content h2 {
+  margin-bottom: 16px;
+  color: #003c71;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+#celebrationMessage {
+  margin-bottom: 24px;
+  color: #334155;
+  font-size: 18px;
+}
+
+#closeCelebrationBtn {
+  min-width: 130px;
+  height: 48px;
+  padding: 0 22px;
+}
+
 .confetti {
   position: fixed;
   top: -24px;

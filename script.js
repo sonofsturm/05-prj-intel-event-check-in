@@ -5,6 +5,9 @@ const greeting = document.getElementById("greeting");
 const attendeeCount = document.getElementById("attendeeCount");
 const progressBar = document.getElementById("progressBar");
 const attendeeList = document.getElementById("attendeeList");
+const celebrationModal = document.getElementById("celebrationModal");
+const celebrationMessage = document.getElementById("celebrationMessage");
+const closeCelebrationBtn = document.getElementById("closeCelebrationBtn");
 
 const teamCounts = {
   water: document.getElementById("waterCount"),
@@ -86,10 +89,24 @@ function createConfetti() {
   }
 }
 
-function showCelebration() {
-  greeting.textContent = `Celebration time! ${getWinningTeam()} wins the attendance challenge!`;
+function showCelebration(name) {
+  let welcomeMessage = "";
+
+  if (name) {
+    welcomeMessage = `Welcome, ${name}! You are our 50th attendee. `;
+  }
+
+  const celebrationText = `${welcomeMessage}Celebration time! ${getWinningTeam()} wins the attendance challenge!`;
+
+  greeting.textContent = celebrationText;
   greeting.className = "celebration-message";
   greeting.style.display = "block";
+  celebrationMessage.textContent = celebrationText;
+
+  if (!celebrationModal.open) {
+    celebrationModal.showModal();
+  }
+
   createConfetti();
 }
 
@@ -179,7 +196,7 @@ function checkInAttendee(event) {
   greeting.className = "success-message";
 
   if (totalAttendees === 50) {
-    showCelebration();
+    showCelebration(name);
   }
 
   greeting.style.display = "block";
@@ -191,3 +208,6 @@ function checkInAttendee(event) {
 loadAttendance();
 renderAttendeeList();
 checkInForm.addEventListener("submit", checkInAttendee);
+closeCelebrationBtn.addEventListener("click", function () {
+  celebrationModal.close();
+});
